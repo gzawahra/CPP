@@ -1,72 +1,22 @@
-# Source files directory
-S		= .
-# Object files directory
-O		= objs/
-# Include files directory
-I		= .
-# Dependency files directory
-D		= .
+SRCS		=	main.cpp \
+				newZombie.cpp \
+				randomChump.cpp \
+				Zombie.cpp 
+OBJS		= ${SRCS:.cpp=.o}
+CPPC		= clang++
+CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
+NAME		= zombie
+RM			= rm -f
 
-# Name of your program
-NAME	= zombies
-
-# list of your source files
-SRCS	= main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
-
-# Compiler
-CC		= clang++
-# Compiler flags
-CFLAGS	+= -Wall -Wextra -Werror -std=c++98
-# Assembly flags (add the libraries here for linux)
-LDFLAGS	+= 
-
-# The rest is automatic
-
-CFLAGS	+= -I$I
-
-SRCS	:= $(foreach file,$(SRCS),$S$(file))
-OBJS	= $(SRCS:$S%=$O%.o)
-DEPS	= $(SRCS:$S%=$D%.d)
-
-RM		= /bin/rm -rf
-
-.PHONY: all clean fclean re test
-
-all: $(NAME)
-
-$O:
-	@mkdir $@
-
-$(OBJS): | $O
-
-$(OBJS): $O%.o: $S%
-	@echo "Compiling $^: "
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "✓"
-
-$D:
-	@mkdir $@
-
-$(DEPS): | $D
-
-$(DEPS): $D%.d: $S%
-	@$(CC) $(CFLAGS) -MM -MF $@ -MT "$O$*.o $@" $<
-
-$(NAME): $(OBJS)
-	@echo "Assembling $(NAME)"
-	@$(CC) $(LDFLAGS) $^ -o $@
-
-clean:
-	@echo "Cleaning up..."
-	@$(RM) $D $O
-
-fclean: clean
-	@echo "Everything!"
-	@$(RM) $(NAME)
-
-re: fclean all
-
-test: $(NAME)
-	./$(NAME)
-
--include $(DEPS)
+%.o :		%.cpp
+			${CPPC} ${CPPFLAGS} -c $<
+all :		${NAME}
+${NAME} :	${OBJS}
+			${CPPC} -o ${NAME} ${OBJS}
+clean :
+			${RM} ${OBJS}
+fclean :	clean
+			${RM} ${NAME}
+re :		fclean all
+.PHONY :
+			all ${NAME} clean fclean re
