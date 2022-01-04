@@ -1,6 +1,6 @@
 #include "PhoneBook.class.hpp"
 
-PhoneBook::PhoneBook(void) : _nb_contact(0) {
+PhoneBook::PhoneBook(void) : _nb_contact(0),_write_index(0){
 	
 	return ;
 }
