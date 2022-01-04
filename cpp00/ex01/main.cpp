@@ -5,10 +5,10 @@ int main(void)
 	PhoneBook	AwesomePB;
 	std::string	cmd;
 
-	std::cout << "Welcome to my AWESOME PHONEBOOK, u can use multiple command which are:" << std::endl;
-	std::cout << "	-ADD : to add a new AWESOME contact to my AWESOME PHONEBOOK" << std::endl; 
-	std::cout << "	-SEARCH : to search and get info from a previously added AWESOME contact" << std::endl;
-	std::cout << "	-EXIT : to exit my AWESOME PHONEBOOK (already miss u <3)" << std::endl;
+	std::cout << "Welcome to my AWESOME PHONEBOOK, the commands available to you are:" << std::endl;
+	std::cout << "	-ADD : to add a new contact to phonebook" << std::endl; 
+	std::cout << "	-SEARCH : to display contacts" << std::endl;
+	std::cout << "	-EXIT : to ... well this is self explanatory" << std::endl;
 	while (42)
 	{
 		std::cout << "Enter a command: ";
@@ -16,12 +16,12 @@ int main(void)
 		if (std::cin.eof())
 		{
 			std::cout << std::endl;
-			std::cout << "U can exit this way too." << std::endl;
+			std::cout << "yeah sure..take the easy way out." << std::endl;
 			return (1);
 		}
 		if (cmd.compare("EXIT") == 0)
 		{
-			std::cout << "I'm out, see ya." << std::endl;
+			std::cout << "Peace out." << std::endl;
 			return (0);
 		}
 		if (cmd.compare("ADD") == 0)

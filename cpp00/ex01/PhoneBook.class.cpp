@@ -11,11 +11,26 @@ PhoneBook::~PhoneBook(void) {
 }
 
 void	PhoneBook::add_contact(void) {
+	
 
-	if (this->_nb_contact == 8)
+	if (this->_write_index == 8)
 	{
-		std::cout << "Can't put more than eight contact." << std::endl;
-		return ;
+		std::cout << "max number of contact reached, would like to overwrite ? (YES or NO)." << std::endl;
+		std::getline(std::cin, this->_cmd);
+		if (this->_cmd.compare("YES") == 0)
+		{
+			this->_write_index = 0;
+		}
+		else if (this->_cmd.compare("NO") == 0)
+		{
+			std::cout << "Aight." << std::endl;
+			return;
+		}
+		else
+		{
+			std::cout << "you should type YES or NO." << std::endl;
+			return;
+		}
 	}
 
 	std::string	first_name;
@@ -24,7 +39,7 @@ void	PhoneBook::add_contact(void) {
 	std::string	phone_number;
 	std::string	darkest_secret;
 
-	std::cout << "Please enter contact informations: " << std::endl;
+	std::cout << "Please enter contact information: " << std::endl;
 	std::cout << "First name: ";
 	std::getline(std::cin ,first_name);
 	std::cout << "Last name: ";
@@ -36,7 +51,7 @@ void	PhoneBook::add_contact(void) {
 	std::cout << "Darkest secret: ";
 	std::getline(std::cin ,darkest_secret);
 	if (first_name.empty() && last_name.empty() && nickname.empty())
-		std::cout << "Can't create a contact without some kind of name."<< std::endl;
+		std::cout << "Can't create a contact without a first/last/nick name!"<< std::endl;
 	else
 	{
 		std::cout << "Contact successfully created !" << std::endl;
@@ -45,8 +60,10 @@ void	PhoneBook::add_contact(void) {
 								nickname,
 								phone_number,
 								darkest_secret);
-		_list_contact[this->_nb_contact] = new_contact;
-		this->_nb_contact++;
+		_list_contact[this->_write_index] = new_contact;
+		this->_write_index++;
+		if(this->_nb_contact < 8)
+			this->_nb_contact++;
 	}
 	std::cout << std::endl;
 }
@@ -56,7 +73,7 @@ void	PhoneBook::show_contact(void) const {
 
 	if (this->_nb_contact == 0)
 	{
-		std::cout << "U have no friend actually, add some before searching for them." << std::endl;
+		std::cout << "Contact list is empty, try out the ADD command." << std::endl;
 		return ;
 	}
 	for (int i = 0; i < this->_nb_contact; i++)
@@ -75,7 +92,7 @@ void	PhoneBook::show_contact(void) const {
 	int			index;
 	std::string	number;
 
-	std::cout << "Which one do you want to see precisely ? ";
+	std::cout << "Select contact index to display"<< std::endl;
 	while (42) {
 
 		std::getline(std::cin, number);

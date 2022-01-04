@@ -19,8 +19,10 @@ public:
 
 private:
 
-	int		_nb_contact;
-	Contact	_list_contact[8];
+	int			_nb_contact;
+	int			_write_index;
+	std::string	_cmd;
+	Contact		_list_contact[8];
 
 };
 
