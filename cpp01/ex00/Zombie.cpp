@@ -8,7 +8,7 @@ Zombie::Zombie( std::string name ): name(name)
 Zombie::~Zombie( void )
 {
 	Zombie::prefix();
-	std::cout << "*Sounds of dying again*" << std::endl;
+	std::cout << "*Gets shot*" << std::endl;
 }
 
 void	Zombie::announce( void ) const
