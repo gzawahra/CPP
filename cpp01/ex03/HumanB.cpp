@@ -1,7 +1,7 @@
 #include <iostream>
 #include "HumanB.hpp"
 
-HumanB::HumanB( std::string name ): name(name), weapon(nullptr)
+HumanB::HumanB( std::string name ): name(name), weapon(NULL)
 {
 }
 

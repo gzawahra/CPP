@@ -27,7 +27,7 @@ Karen::filterLevel	Karen::getLevelFromString( std::string level)
 		"DEBUG"
 	};
 
-	std::transform(level.begin(), level.end(), level.begin(), ::toupper);
+	//std::transform(level.begin(), level.end(), level.begin(), ::toupper);
 	for (int i = 0; i < 4; i++)
 	{
 		if (level == complaintLevels[i])

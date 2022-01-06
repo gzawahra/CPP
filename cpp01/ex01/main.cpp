@@ -9,23 +9,12 @@ void	announceAllZombies( Zombie *zombieHorde, size_t numberOfZombies)
 	}
 }
 
-int		main( int ac, char **av)
+int		main(void)
 {
-	int nz = 0;
-
-	if (ac == 1)
-		nz = 5;
-	else if(ac == 2)
-		nz = stoi(av[1]);
-	else
-	{
-		std::cout << "Wrong number of args" << std::endl;		
-		return (0);
-	}
 	std::cout << "Creating the first Zombie horde of Zombies" << std::endl;
 	{
-		Zombie	*firstZombieHorde = zombieHorde(nz, "Jack");
-		announceAllZombies(firstZombieHorde, nz);
+		Zombie	*firstZombieHorde = zombieHorde(10, "Jack");
+		announceAllZombies(firstZombieHorde, 10);
 		delete [] firstZombieHorde;
 	}
 	return (0);

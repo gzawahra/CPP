@@ -1,5 +1,4 @@
-SRCS		=	main.cpp \
-				Replace.cpp
+SRCS		=	main.cpp 
 OBJS		= ${SRCS:.cpp=.o}
 CPPC		= clang++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
