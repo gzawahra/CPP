@@ -1,7 +1,7 @@
 SRCS		=	main.cpp \
 				Karen.cpp 
 OBJS		= ${SRCS:.cpp=.o}
-CPPC		= clang++
+CPPC		= c++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
 NAME		= karen
 RM			= rm -f
