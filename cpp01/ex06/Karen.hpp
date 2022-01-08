@@ -22,7 +22,7 @@ public:
 	~Karen( void );
 
 	void complain( const std::string &level );
-	void complain( filterLevel level );
+	void switchcomplain( filterLevel level );
 
 	filterLevel	getLevel( void ) const;
 	bool		setLevel( const filterLevel &newLevel );

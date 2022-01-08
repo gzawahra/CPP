@@ -37,7 +37,8 @@ static void replace(std::string &line, const std::string &s1, const std::string 
 
     while ((pos = line.find(s1, pos)) != std::string::npos)
     {
-        line.replace(pos, l1, s2);
+        line.erase(pos, l1);
+        line.insert(pos,s2);
         pos += l2;
     }
 }

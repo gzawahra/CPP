@@ -27,47 +27,48 @@ Karen::filterLevel	Karen::getLevelFromString( std::string level)
 		"DEBUG"
 	};
 
-	//std::transform(level.begin(), level.end(), level.begin(), ::toupper);
-
 	for (int i = 0; i < 4; i++)
 	{
-		std::cout << "printflevel " << level << std::endl;
-		std::cout << "printfcompl " << complaintLevels[i] << std::endl;
 		if (level == complaintLevels[i])
+		{
 			return ((filterLevel)i);
+		}
+
 	}
 	return (Karen::levelInsignificant);
 }
 
 void	Karen::complain( const std::string &level )
 {
-	std::cout << "Levelfromstring " << this->getLevelFromString(level) << std::endl;
-	this->complain(this->getLevelFromString(level));
-
+	this->switchcomplain(this->getLevelFromString(level));
 }
 
-void	Karen::complain( Karen::filterLevel level )
+void	Karen::switchcomplain( Karen::filterLevel level )
 {
-	if (level <= this->_level)
+	switch (level)
 	{
-		switch (level)
-		{
-			case Karen::levelError:
-				this->error();
-				break;
-			case Karen::levelWarning:
-				this->warning();
-				break;
-			case Karen::levelInfo:
-				this->info();
-				break;
-			case Karen::levelDebug:
-				this->debug();
-				break;
-			default:
-				this->defaultMessage();
-		}
+		case Karen::levelError:
+			this->error();
+			break;
+		case Karen::levelWarning:
+			this->warning();
+			this->error();
+			break;
+		case Karen::levelInfo:
+			this->info();
+			this->warning();
+			this->error();
+			break;
+		case Karen::levelDebug:
+			this->debug();
+			this->info();
+			this->warning();
+			this->error();
+			break;
+		default:
+			this->defaultMessage();
 	}
+
 }
 
 void	Karen::defaultMessage( void )

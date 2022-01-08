@@ -5,7 +5,7 @@
 void	complain(std::string level)
 {
 	Karen karen(level);
-
+	karen.complain(level);
 	//karen.complain("debug");
 	//karen.complain("info");
 	//karen.complain("warning");
