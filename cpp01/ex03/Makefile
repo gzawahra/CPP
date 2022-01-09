@@ -3,7 +3,7 @@ SRCS		=	main.cpp \
 				HumanA.cpp \
 				HumanB.cpp 
 OBJS		= ${SRCS:.cpp=.o}
-CPPC		= c++
+CPPC		= clang++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
 NAME		= violence
 RM			= rm -f

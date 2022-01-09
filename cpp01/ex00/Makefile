@@ -3,7 +3,7 @@ SRCS		=	main.cpp \
 				randomChump.cpp \
 				Zombie.cpp 
 OBJS		= ${SRCS:.cpp=.o}
-CPPC		= c++
+CPPC		= clang++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
 NAME		= zombie
 RM			= rm -f

@@ -2,7 +2,7 @@ SRCS		=	main.cpp \
 				ZombieHorde.cpp \
 				Zombie.cpp 
 OBJS		= ${SRCS:.cpp=.o}
-CPPC		= c++
+CPPC		= clang++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
 NAME		= zombies
 RM			= rm -f

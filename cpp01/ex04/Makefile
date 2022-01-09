@@ -1,6 +1,6 @@
 SRCS		=	main.cpp 
 OBJS		= ${SRCS:.cpp=.o}
-CPPC		= c++
+CPPC		= clang++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
 NAME		= replace
 RM			= rm -f
