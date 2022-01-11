@@ -66,7 +66,7 @@ void	make_tests(int value_of_b, float value_of_c)
 
 int main( void )
 {
-	make_tests(14, 50.125f);
-	std::cout << "Now same thing but with negative numbers:" << std::endl;
-	make_tests(-12, -80.175829380f);
+	make_tests(42, 12.123f);
+	std::cout << "negative numbers:" << std::endl;
+	make_tests(-21, -123.123456789f);
 }

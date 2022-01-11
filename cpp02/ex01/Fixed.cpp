@@ -4,14 +4,14 @@
 Fixed::Fixed( void ): _fixed_point_value(0)
 {
 	if (Fixed::_verbose)
-		std::cout << "Default constructor called" << std::endl;
+		std::cout << "Default constructor" << std::endl;
 	return;
 }
 
 Fixed::Fixed( const int value )
 {
 	if (Fixed::_verbose)
-		std::cout << "Constant integer constructor called" << std::endl;
+		std::cout << "integer constructor" << std::endl;
 	this->_fixed_point_value = value << this->_number_of_fractional_bits;
 	return;
 }
@@ -21,7 +21,7 @@ Fixed::Fixed( const float value )
 	int power = pow(2, this->_number_of_fractional_bits);
 
 	if (Fixed::_verbose)
-		std::cout << "Constant float constructor called" << std::endl;
+		std::cout << "float constructor" << std::endl;
 	this->_fixed_point_value = roundf(value * power);
 	return;
 }
@@ -29,7 +29,7 @@ Fixed::Fixed( const float value )
 Fixed::Fixed( Fixed const & src )
 {
 	if (Fixed::_verbose)
-		std::cout << "Copy constructor called" << std::endl;
+		std::cout << "Overload constructor" << std::endl;
 	*this = src;
 	return;
 }
@@ -37,14 +37,14 @@ Fixed::Fixed( Fixed const & src )
 Fixed::~Fixed( void )
 {
 	if (Fixed::_verbose)
-		std::cout << "Destructor called" << std::endl;
+		std::cout << "Destructor" << std::endl;
 	return;
 }
 
 Fixed &	Fixed::operator=( Fixed const & rhs )
 {
 	if (Fixed::_verbose)
-		std::cout << "Assignement operator called" << std::endl;
+		std::cout << "Assignement" << std::endl;
 	if (this != &rhs)
 		this->_fixed_point_value = rhs._fixed_point_value;
 	return *this;
