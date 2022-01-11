@@ -1,72 +1,89 @@
-# Source files directory
-S		= srcs/
-# Object files directory
-O		= objs/
-# Include files directory
-I		= incs/
-# Dependency files directory
-D		= deps/
+#-----------------------------------------------#
+################# PROG_NAME #####################
+#-----------------------------------------------#
+NAME = Trap
 
-# Name of your program
-NAME	= fragtrap
+#-----------------------------------------------#
+################## COMPILO ######################
+#-----------------------------------------------#
+CXX = clang++
 
-# list of your source files
-SRCS	= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+#-----------------------------------------------#
+################## SOURCES ######################
+#-----------------------------------------------#
+SRCS +=		ClapTrap.cpp	\
+			ScavTrap.cpp	\
+			FragTrap.cpp	\
+			main.cpp		
+vpath %.cpp $(PATH_SRCS)
 
-# Compiler
-CC		= clang++
-# Compiler flags
-CFLAGS	+= -Wall -Wextra -std=c++98
-# Assembly flags (add the libraries here for linux)
-LDFLAGS	+= 
+#-----------------------------------------------#
+################## HEADERS ######################
+#-----------------------------------------------#
+HEADERS		+=	ClapTrap.hpp \
+				ScavTrap.hpp \
+				FragTrap.hpp
+vpath %.h $(PATH_HEAD)
 
-# The rest is automatic
+#-----------------------------------------------#
+################## OBJECTS ######################
+#-----------------------------------------------#
+OBJS = $(addprefix $(PATH_OBJS), $(SRCS:.cpp=.o))
 
-CFLAGS	+= -I$I
+#-----------------------------------------------#
+################### FLAGS #######################
+#-----------------------------------------------#
+CXXFLAGS +=	-Wall -Wextra -Werror				\
+			-std=c++98
+ifeq ($(d), 0)
+	CXXFLAGS	+= -Wpadded
+	CXXFLAGS	+= -g3
+	CXXFLAGS	+= -fsanitize=address,undefined
+endif
 
-SRCS	:= $(foreach file,$(SRCS),$S$(file))
-OBJS	= $(SRCS:$S%=$O%.o)
-DEPS	= $(SRCS:$S%=$D%.d)
+#-----------------------------------------------#
+################# INCLUDES ######################
+#-----------------------------------------------#
+INCLUDES	=	-I $(PATH_HEAD)					\
 
-RM		= /bin/rm -rf
 
-.PHONY: all clean fclean re test
+#-----------------------------------------------#
+################### PATHS #######################
+#-----------------------------------------------#
+PATH_HEAD	=	./
+PATH_SRCS	=	./
+PATH_OBJS	=	./objects/
+
+#-----------------------------------------------#
+################# LIBRARIES #####################
+#-----------------------------------------------#
+ifeq ($(d), 0)
+	LDFLAGS		+= -fsanitize=address,undefined
+endif
+
+#-----------------------------------------------#
+################### RULES #######################
+#-----------------------------------------------#
 
 all: $(NAME)
 
-$O:
-	@mkdir $@
-
-$(OBJS): | $O
-
-$(OBJS): $O%.o: $S%
-	@echo "Compiling $^: "
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "✓"
-
-$D:
-	@mkdir $@
-
-$(DEPS): | $D
-
-$(DEPS): $D%.d: $S%
-	@$(CC) $(CFLAGS) -MM -MF $@ -MT "$O$*.o $@" $<
-
 $(NAME): $(OBJS)
-	@echo "Assembling $(NAME)"
-	@$(CC) $(LDFLAGS) $^ -o $@
+	$(CXX) -o $@ $^ $(LDFLAGS) $(LDLIBS) $(CXXFLAGS)
+
+$(PATH_OBJS)%.o: %.cpp
+	$(CXX) -o $@ -c $< $(CXXFLAGS) $(INCLUDES)
+
+$(OBJS): Makefile $(HEADERS) | $(PATH_OBJS)
+
+$(PATH_OBJS):
+	mkdir $@
 
 clean:
-	@echo "Cleaning up..."
-	@$(RM) $D $O
+	rm -rf $(PATH_OBJS)
 
 fclean: clean
-	@echo "Everything!"
-	@$(RM) $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
 
-test: $(NAME)
-	./$(NAME)
-
--include $(DEPS)
+.PHONY: all clean fclean re
