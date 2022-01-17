@@ -1,12 +1,5 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap( ClapTrap const & src )
-{
-		std::cout << "Copy constructor called" << std::endl;
-	*this = src;
-	return;
-}
-
 ClapTrap::ClapTrap( void ): _name(""), _hitPoints(10),
 	_energyPoints(10), _attackDamage(0)
 {
@@ -29,20 +22,6 @@ ClapTrap::~ClapTrap( void )
 	return;
 }
 
-ClapTrap &	ClapTrap::operator=( ClapTrap const & rhs )
-{
-	std::cout << "Assignement operator called, but it doesn't work because I go"
-		"t lazy making accessors" << std::endl;
-	std::cout << rhs << std::endl;
-	return *this;
-}
-
-std::ostream &	operator<<( std::ostream & ostr, ClapTrap const & instance)
-{
-	ostr << "ClapTrap " << instance.getName();
-	return ostr;
-}
-
 const std::string	&ClapTrap::getName( void ) const
 {
 	return this->_name;
@@ -50,7 +29,7 @@ const std::string	&ClapTrap::getName( void ) const
 
 void		ClapTrap::attack( std::string const & target )
 {
-	std::cout << "ClapTrap " << this->_name << " attack " << target
+	std::cout << "ClapTrap " << this->_name << " attacked " << target
 		<< " causing " << this->_attackDamage << " points of damage!"
 		<< std::endl;
 }
@@ -60,10 +39,10 @@ void		ClapTrap::takeDamage( unsigned int amount )
 	this->_hitPoints -= amount;
 	if (this->_hitPoints < 0)
 		std::cout << "ClapTrap " << this->_name << " took " << amount
-			<< " damage and is quite unwell by now..." << std::endl;
+			<< " damage." << std::endl;
 	else
 		std::cout << "ClapTrap " << this->_name << " took " << amount
-			<< " hit points, OUCH! Only got " << this->_hitPoints
+			<< " hit points, " << this->_hitPoints
 			<< " hit points left." << std::endl;
 }
 
@@ -73,9 +52,9 @@ void		ClapTrap::beRepaired( unsigned int amount )
 	if (this->_hitPoints > this->_initialHitPoints)
 	{
 		this->_hitPoints = this->_initialHitPoints;
-		std::cout << "You can't heal more than your max!" << std::endl;
+		std::cout << "Max health reached !" << std::endl;
 	}
 	std::cout << "ClapTrap " << this->_name << " was just repaired "
-		<< amount << " energy points, now he's got " << this->_hitPoints
-		<< ". It ain't much, but it's honest work" << std::endl;
+		<< amount << " energy points, now has" << this->_hitPoints
+		<< std::endl;
 }

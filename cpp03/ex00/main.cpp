@@ -2,12 +2,12 @@
 
 int	main( void )
 {
-	ClapTrap cl4ptp("cl4ptp");
+	ClapTrap claptp("claptp");
 
-	cl4ptp.attack("Handsome Jack");
-	cl4ptp.takeDamage(6);
-	cl4ptp.beRepaired(4);
-	cl4ptp.takeDamage(3);
-	cl4ptp.beRepaired(8);
-	cl4ptp.takeDamage(17);
+	claptp.attack("Doofus");
+	claptp.takeDamage(6);
+	claptp.beRepaired(4);
+	claptp.takeDamage(3);
+	claptp.beRepaired(8);
+	claptp.takeDamage(17);
 }

@@ -2,25 +2,24 @@
 
 int	main( void )
 {
-	{
-		ScavTrap sc4vtp("sc4vtp");
+	
+	ScavTrap scavtp("scavtp");
 
-		sc4vtp.attack("Handsome Jack");
-		sc4vtp.takeDamage(6);
-		sc4vtp.beRepaired(4);
-		sc4vtp.takeDamage(3);
-		sc4vtp.guardGate();
-		sc4vtp.beRepaired(8);
-		sc4vtp.takeDamage(17);
-	}
-	{
-		ClapTrap cl4ptp("cl4ptp");
+	scavtp.attack("Doofus");
+	scavtp.takeDamage(6);
+	scavtp.beRepaired(4);
+	scavtp.takeDamage(3);
+	scavtp.guardGate();
+	scavtp.beRepaired(8);
+	scavtp.takeDamage(17);
+		
+	ClapTrap claptp("claptp");
 
-		cl4ptp.attack("Handsome Jack");
-		cl4ptp.takeDamage(6);
-		cl4ptp.beRepaired(4);
-		cl4ptp.takeDamage(3);
-		cl4ptp.beRepaired(8);
-		cl4ptp.takeDamage(17);
-	}
+	claptp.attack("Doofus");
+	claptp.takeDamage(6);
+	claptp.beRepaired(4);
+	claptp.takeDamage(3);
+	claptp.beRepaired(8);
+	claptp.takeDamage(17);
 }
+

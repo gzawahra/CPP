@@ -3,36 +3,32 @@
 
 int	main( void )
 {
-	{
-		FragTrap fr4gtp("fr4gtp");
+	FragTrap fragtp("fragtp");
 
-		fr4gtp.attack("Handsome Jack");
-		fr4gtp.takeDamage(6);
-		fr4gtp.beRepaired(4);
-		fr4gtp.takeDamage(3);
-		fr4gtp.highFivesGuys();
-		fr4gtp.beRepaired(8);
-		fr4gtp.takeDamage(17);
-	}
-	{
-		ScavTrap sc4vtp("sc4vtp");
+	fragtp.attack("Doofus");
+	fragtp.takeDamage(6);
+	fragtp.beRepaired(4);
+	fragtp.takeDamage(3);
+	fragtp.highFivesGuys();
+	fragtp.beRepaired(8);
+	fragtp.takeDamage(17);
 
-		sc4vtp.attack("Handsome Jack");
-		sc4vtp.takeDamage(6);
-		sc4vtp.beRepaired(4);
-		sc4vtp.takeDamage(3);
-		sc4vtp.guardGate();
-		sc4vtp.beRepaired(8);
-		sc4vtp.takeDamage(17);
-	}
-	{
-		ClapTrap cl4ptp("cl4ptp");
+	ScavTrap scavtp("scavtp");
 
-		cl4ptp.attack("Handsome Jack");
-		cl4ptp.takeDamage(6);
-		cl4ptp.beRepaired(4);
-		cl4ptp.takeDamage(3);
-		cl4ptp.beRepaired(8);
-		cl4ptp.takeDamage(17);
-	}
+	scavtp.attack("Doofus");
+	scavtp.takeDamage(6);
+	scavtp.beRepaired(4);
+	scavtp.takeDamage(3);
+	scavtp.guardGate();
+	scavtp.beRepaired(8);
+	scavtp.takeDamage(17);
+
+	ClapTrap claptp("claptp");
+
+	claptp.attack("Doofus");
+	claptp.takeDamage(6);
+	claptp.beRepaired(4);
+	claptp.takeDamage(3);
+	claptp.beRepaired(8);
+	claptp.takeDamage(17);
 }

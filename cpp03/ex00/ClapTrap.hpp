@@ -9,10 +9,7 @@ class ClapTrap
 public:
 
 	ClapTrap( const std::string name );
-	ClapTrap( const ClapTrap &src );
 	~ClapTrap( void );
-
-	ClapTrap	&operator=( const ClapTrap &other );
 
 	void		attack( std::string const & target );
 	void		takeDamage( unsigned int amount );
@@ -28,10 +25,8 @@ private:
 	int			_initialEnergyPoints;
 	int			_attackDamage;
 
-	ClapTrap( void );	// The empty constructor cannot be used
+	ClapTrap( void );
 
 };
-
-std::ostream	&operator<<( std::ostream &ostream, const ClapTrap &myClass );
 
 #endif

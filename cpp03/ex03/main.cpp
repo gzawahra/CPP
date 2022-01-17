@@ -2,52 +2,49 @@
 
 int	main( void )
 {
-	{
-		DiamondTrap di4mondtp("di4mondtp");
 
-		di4mondtp.attack("Handsome Jack");
-		di4mondtp.takeDamage(6);
-		di4mondtp.beRepaired(4);
-		di4mondtp.takeDamage(3);
-		di4mondtp.guardGate();
-		di4mondtp.highFivesGuys();
-		di4mondtp.whoAmI();
-		di4mondtp.beRepaired(8);
-		di4mondtp.takeDamage(17);
-	}
-	std::cout << "----------------------------------------" << std::endl;
-	{
-		FragTrap fr4gtp("fr4gtp");
+	DiamondTrap diamondtp("diamondtp");
 
-		fr4gtp.attack("Handsome Jack");
-		fr4gtp.takeDamage(6);
-		fr4gtp.beRepaired(4);
-		fr4gtp.takeDamage(3);
-		fr4gtp.highFivesGuys();
-		fr4gtp.beRepaired(8);
-		fr4gtp.takeDamage(17);
-	}
-	std::cout << "----------------------------------------" << std::endl;
-	{
-		ScavTrap sc4vtp("sc4vtp");
+	diamondtp.attack("Doofus");
+	diamondtp.takeDamage(6);
+	diamondtp.beRepaired(4);
+	diamondtp.takeDamage(3);
+	diamondtp.guardGate();
+	diamondtp.highFivesGuys();
+	diamondtp.whoAmI();
+	diamondtp.beRepaired(8);
+	diamondtp.takeDamage(17);
+	std::cout << std::endl;
+	
+	FragTrap fragtp("fragtp");
 
-		sc4vtp.attack("Handsome Jack");
-		sc4vtp.takeDamage(6);
-		sc4vtp.beRepaired(4);
-		sc4vtp.takeDamage(3);
-		sc4vtp.guardGate();
-		sc4vtp.beRepaired(8);
-		sc4vtp.takeDamage(17);
-	}
-	std::cout << "----------------------------------------" << std::endl;
-	{
-		ClapTrap cl4ptp("cl4ptp");
+	fragtp.attack("Doofus");
+	fragtp.takeDamage(6);
+	fragtp.beRepaired(4);
+	fragtp.takeDamage(3);
+	fragtp.highFivesGuys();
+	fragtp.beRepaired(8);
+	fragtp.takeDamage(17);
+	std::cout << std::endl;
+	
+	ScavTrap scavtp("scavtp");
 
-		cl4ptp.attack("Handsome Jack");
-		cl4ptp.takeDamage(6);
-		cl4ptp.beRepaired(4);
-		cl4ptp.takeDamage(3);
-		cl4ptp.beRepaired(8);
-		cl4ptp.takeDamage(17);
-	}
+	scavtp.attack("Doofus");
+	scavtp.takeDamage(6);
+	scavtp.beRepaired(4);
+	scavtp.takeDamage(3);
+	scavtp.guardGate();
+	scavtp.beRepaired(8);
+	scavtp.takeDamage(17);
+	std::cout << std::endl;
+	
+	ClapTrap claptp("claptp");
+
+	claptp.attack("Doofus");
+	claptp.takeDamage(6);
+	claptp.beRepaired(4);
+	claptp.takeDamage(3);
+	claptp.beRepaired(8);
+	claptp.takeDamage(17);
+	std::cout << std::endl;
 }

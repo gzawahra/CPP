@@ -13,28 +13,17 @@ ScavTrap::ScavTrap( const std::string name )
 
 ScavTrap::~ScavTrap( void )
 {
-	std::cout << "Destructor called, but for ScavTrap so it's cooler"
-		<< std::endl;
+	std::cout << "Destructor for scavtrap called" << std::endl;
 	return;
-}
-
-ScavTrap &	ScavTrap::operator=( ScavTrap const & rhs )
-{
-	std::cout << "Assignement operator called, but it doesn't work because I go"
-		"t lazy making accessors" << std::endl;
-	std::cout << rhs << std::endl;
-	return *this;
 }
 
 void		ScavTrap::guardGate( void )
 {
-	std::cout << "ScavTrap " << this->_name << " entered Gate Keeper mode!!! (I"
-		" have no idea what this means, but cool I guess)" << std::endl;
+	std::cout << "ScavTrap " << this->_name << " activated Gate Keeper !" << std::endl;
 }
 
 void		ScavTrap::attack( std::string const & target )
 {
-	std::cout << "ScavTrap " << this->_name << " attack " << target
-		<< " causing " << this->_attackDamage << " points of damage! (still tra"
-		"sh)" << std::endl;
+	std::cout << "ScavTrap " << this->_name << " attacked " << target
+		<< " causing " << this->_attackDamage << " points of damage!" << std::endl;
 }

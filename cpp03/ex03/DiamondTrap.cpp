@@ -17,24 +17,10 @@ DiamondTrap::DiamondTrap( void )
 	return;
 }
 
-DiamondTrap::DiamondTrap( DiamondTrap const & src )
-{
-	std::cout << "Copy constructor for DiamondTrap called" << std::endl;
-	*this = src;
-	return;
-}
-
 DiamondTrap::~DiamondTrap( void )
 {
 	std::cout << "Destructor for DiamondTrap called" << std::endl;
 	return;
-}
-
-DiamondTrap &	DiamondTrap::operator=( DiamondTrap const & rhs )
-{
-	std::cout << "Assignement operator doesn't work, get lost" << std::endl;
-	std::cout << rhs << std::endl;
-	return *this;
 }
 
 void		DiamondTrap::attack( const std::string &target ) const
