@@ -9,7 +9,11 @@ class ClapTrap
 public:
 
 	ClapTrap( const std::string name );
+	ClapTrap( const ClapTrap &src );
+	ClapTrap( void );
 	~ClapTrap( void );
+
+	ClapTrap	&operator=( const ClapTrap &other );
 
 	void		attack( std::string const & target );
 	void		takeDamage( unsigned int amount );
@@ -19,14 +23,15 @@ public:
 
 protected:
 
-	ClapTrap( void );
-
 	std::string	_name;
-	int			_hitPoints;
-	int			_energyPoints;
-	int			_initialHitPoints;
-	int			_attackDamage;
+	unsigned int			_hitPoints;
+	unsigned int			_energyPoints;
+	unsigned int			_initialHitPoints;
+	unsigned int			_attackDamage;
+
 
 };
+
+std::ostream	&operator<<( std::ostream &ostream, const ClapTrap &myClass );
 
 #endif

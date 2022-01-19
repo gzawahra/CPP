@@ -12,7 +12,11 @@ int	main( void )
 	scavtp.guardGate();
 	scavtp.beRepaired(8);
 	scavtp.takeDamage(17);
-		
+
+	std::cout << std::endl;	
+	std::cout << " ############################ " << std::endl;		
+	std::cout << std::endl;	
+	
 	ClapTrap claptp("claptp");
 
 	claptp.attack("Doofus");

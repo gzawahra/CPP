@@ -13,6 +13,10 @@ int	main( void )
 	fragtp.beRepaired(8);
 	fragtp.takeDamage(17);
 
+	std::cout << std::endl;	
+	std::cout << " ############################ " << std::endl;		
+	std::cout << std::endl;
+
 	ScavTrap scavtp("scavtp");
 
 	scavtp.attack("Doofus");
@@ -22,13 +26,4 @@ int	main( void )
 	scavtp.guardGate();
 	scavtp.beRepaired(8);
 	scavtp.takeDamage(17);
-
-	ClapTrap claptp("claptp");
-
-	claptp.attack("Doofus");
-	claptp.takeDamage(6);
-	claptp.beRepaired(4);
-	claptp.takeDamage(3);
-	claptp.beRepaired(8);
-	claptp.takeDamage(17);
 }

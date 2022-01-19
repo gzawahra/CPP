@@ -21,6 +21,12 @@ FragTrap::FragTrap( void )
 	std::cout << "Default constructor for FragTrap called" << std::endl;
 	return;
 }
+FragTrap::FragTrap( FragTrap const & src )
+{
+	std::cout << "Copy constructor for FragTrap called" << std::endl;
+	*this = src;
+	return;
+}
 
 FragTrap::~FragTrap( void )
 {
@@ -28,7 +34,13 @@ FragTrap::~FragTrap( void )
 	return;
 }
 
-void		FragTrap::highFivesGuys( void ) const
+FragTrap &	FragTrap::operator=( FragTrap const & rhs )
+{
+	std::cout << "Assignement operator called for FragTrap" << std::endl;
+	std::cout << rhs << std::endl;
+	return *this;
+}
+void		FragTrap::highFivesGuys( void )
 {
 	std::cout << "High five!" << std::endl;
 }

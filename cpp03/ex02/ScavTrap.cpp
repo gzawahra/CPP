@@ -1,5 +1,6 @@
 #include "ScavTrap.hpp"
 
+
 ScavTrap::ScavTrap( const std::string name )
 {
 	this->_name = name;
@@ -11,10 +12,24 @@ ScavTrap::ScavTrap( const std::string name )
 	return;
 }
 
+ScavTrap::ScavTrap( ScavTrap const & src )
+{
+		std::cout << "Copy constructor called" << std::endl;
+	*this = src;
+	return;
+}
+
 ScavTrap::~ScavTrap( void )
 {
 	std::cout << "Destructor for scavtrap called" << std::endl;
 	return;
+}
+
+ScavTrap &	ScavTrap::operator=( ScavTrap const & rhs )
+{
+	std::cout << "Assignement operator called" << std::endl;
+	std::cout << rhs << std::endl;
+	return *this;
 }
 
 void		ScavTrap::guardGate( void )

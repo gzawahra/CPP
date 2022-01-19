@@ -16,6 +16,12 @@ DiamondTrap::DiamondTrap( void )
 	std::cout << "Default constructor for DiamondTrap called" << std::endl;
 	return;
 }
+DiamondTrap::DiamondTrap( DiamondTrap const & src )
+{
+	std::cout << "Copy constructor for DiamondTrap called" << std::endl;
+	*this = src;
+	return;
+}
 
 DiamondTrap::~DiamondTrap( void )
 {
@@ -23,9 +29,11 @@ DiamondTrap::~DiamondTrap( void )
 	return;
 }
 
-void		DiamondTrap::attack( const std::string &target ) const
+DiamondTrap &	DiamondTrap::operator=( DiamondTrap const & rhs )
 {
-	ScavTrap::attack(target);
+	std::cout << "Assignement operator" << std::endl;
+	std::cout << rhs << std::endl;
+	return *this;
 }
 
 void		DiamondTrap::whoAmI( void ) const
