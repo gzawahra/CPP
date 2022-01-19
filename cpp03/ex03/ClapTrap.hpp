@@ -24,10 +24,10 @@ public:
 protected:
 
 	std::string	_name;
-	unsigned int			_hitPoints;
-	unsigned int			_energyPoints;
-	unsigned int			_initialHitPoints;
-	unsigned int			_attackDamage;
+	unsigned int	_hitPoints;
+	unsigned int	_energyPoints;
+	unsigned int	_initialHitPoints;
+	unsigned int	_attackDamage;
 
 
 };

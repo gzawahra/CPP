@@ -16,8 +16,7 @@ public:
 	
 	void		highFivesGuys( void );
 
-private:
-
+protected:
 };
 
 #endif

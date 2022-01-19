@@ -4,7 +4,7 @@ int	main( void )
 {
 
 	DiamondTrap diamondtp("diamondtp");
-
+	diamondtp.whoAmI();
 	diamondtp.attack("cptp");
 	diamondtp.takeDamage(6);
 	diamondtp.beRepaired(4);
