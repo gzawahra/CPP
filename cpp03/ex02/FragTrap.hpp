@@ -3,7 +3,7 @@
 
 # include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
 
 public:
@@ -16,8 +16,7 @@ public:
 	
 	void		highFivesGuys( void );
 
-private:
-
+protected:
 };
 
 #endif
