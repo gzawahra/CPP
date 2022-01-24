@@ -17,6 +17,9 @@ public:
 	void		highFivesGuys( void );
 
 protected:
+	unsigned int	_S_hitPoints;
+	unsigned int	_S_energyPoints;
+	unsigned int	_S_attackDamage;
 };
 
 #endif

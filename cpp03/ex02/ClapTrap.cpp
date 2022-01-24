@@ -2,21 +2,20 @@
 
 ClapTrap::ClapTrap ( void )
 {
-	std::cout << "Default constructor for FragTrap called" << std::endl;
+	std::cout << "Default constructor for ClapTrap called" << std::endl;
 	return;
 }
 
 ClapTrap::ClapTrap( const std::string name ): _name(name), _hitPoints(10),
 	_energyPoints(10), _attackDamage(0)
 {
-	this->_initialHitPoints = this->_energyPoints;
-		std::cout << "Name constructor called" << std::endl;
+	std::cout << "Name constructor called" << std::endl;
 	return;
 }
 
 ClapTrap::ClapTrap( ClapTrap const & src )
 {
-		std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Copy constructor called" << std::endl;
 	*this = src;
 	return;
 }
@@ -78,11 +77,19 @@ void		ClapTrap::beRepaired( unsigned int amount )
 {
 	if(_energyPoints > 0)
 	{
-		_energyPoints--;
-		std::cout << "ClapTrap " << this->_name << " was just repaired "
-			<< amount << " hitpoints, now has " << this->_hitPoints
-			<< " HitPoints and " << this->_energyPoints << " energypoints."
-			<< std::endl;
+		if(amount < 0 || amount > 65535)
+			std::cout << "ClapTrap " << this->_name 
+				<< " can't repait this amount "
+				<< std::endl;				
+		else
+		{
+			_energyPoints--;
+			_hitPoints += amount;
+			std::cout << "ClapTrap " << this->_name << " was just repaired "
+				<< amount << " hitpoints, now has " << this->_hitPoints
+				<< " HitPoints and " << this->_energyPoints << " energypoints."
+				<< std::endl;
+		}
 	}
 	else
 	{

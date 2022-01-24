@@ -4,9 +4,11 @@ FragTrap::FragTrap( const std::string &name )
 {
 	this->_name = name;
 	this->_hitPoints = 100;
-	this->_initialHitPoints = this->_hitPoints;
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
+	this->_S_hitPoints = this->_hitPoints;
+	this->_S_energyPoints = this->_energyPoints;
+	this->_S_attackDamage = this->_attackDamage;
 	std::cout << "Name constructor for FragTrap called" << std::endl;
 	return;
 }
@@ -15,9 +17,11 @@ FragTrap::FragTrap( void )
 {
 	this->_name = "";
 	this->_hitPoints = 100;
-	this->_initialHitPoints = this->_hitPoints;
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
+	this->_S_hitPoints = this->_hitPoints;
+	this->_S_energyPoints = this->_energyPoints;
+	this->_S_attackDamage = this->_attackDamage;
 	std::cout << "Default constructor for FragTrap called" << std::endl;
 	return;
 }

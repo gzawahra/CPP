@@ -15,7 +15,7 @@ SRCS +=		ClapTrap.cpp	\
 			ScavTrap.cpp	\
 			FragTrap.cpp	\
 			DiamondTrap.cpp	\
-			main.cpp		
+			main.cpp
 vpath %.cpp $(PATH_SRCS)
 
 #-----------------------------------------------#
@@ -35,7 +35,7 @@ OBJS = $(addprefix $(PATH_OBJS), $(SRCS:.cpp=.o))
 #-----------------------------------------------#
 ################### FLAGS #######################
 #-----------------------------------------------#
-CXXFLAGS +=	-Wall -Wextra -Werror				\
+CXXFLAGS +=	-Wall -Wextra -Werror -Wshadow		\
 			-std=c++98
 ifeq ($(d), 0)
 	CXXFLAGS	+= -Wpadded
