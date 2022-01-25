@@ -14,8 +14,6 @@ CXX = clang++
 SRCS +=		AAnimal.cpp		\
 			Cat.cpp			\
 			Dog.cpp			\
-			WrongAnimal.cpp	\
-			WrongCat.cpp	\
 			Brain.cpp		\
 			main.cpp	
 vpath %.cpp $(PATH_SRCS)
@@ -26,8 +24,6 @@ vpath %.cpp $(PATH_SRCS)
 HEADERS	+=	AAnimal.hpp		\
 			Cat.hpp			\
 			Dog.hpp			\
-			WrongAnimal.hpp	\
-			WrongCat.hpp	\
 			Brain.hpp
 
 vpath %.h $(PATH_HEAD)

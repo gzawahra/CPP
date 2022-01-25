@@ -2,33 +2,33 @@
 
 Animal::Animal( void ): type("")
 {
-	std::cout << "Default constructor for Animal called" << std::endl;
+	std::cout << "Animal is born !" << std::endl;
 	return;
 }
 
 Animal::Animal( Animal const & src )
 {
-	std::cout << "Copy constructor for Animal called" << std::endl;
+	std::cout << "Animal is born !" << std::endl;
 	*this = src;
 	return;
 }
 
 Animal::~Animal( void )
 {
-	std::cout << "Destructor for Animal called" << std::endl;
+	std::cout << "Animal died !" << std::endl;
 	return;
 }
 
 Animal &	Animal::operator=( Animal const & rhs )
 {
-	std::cout << "Assignement operator for Animal called" << std::endl;
+	std::cout << "Animal has been assigned !" << std::endl;
 	this->type = rhs.getType();
 	return *this;
 }
 
 void	Animal::makeSound( void ) const
 {
-	std::cout << "The sound every single animal on earth makes... I guess"
+	std::cout << "random animal sounds ...."
 		<< std::endl;
 }
 

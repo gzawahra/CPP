@@ -19,10 +19,10 @@ int	main( void )
 	}
 
 	brain = animals[7]->getBrain();
-	brain->ideas[0] = "I'm hungry";
-	brain->ideas[1] = "That's a strange idea I'm having";
-	brain->ideas[2] = "Ball!!!!!";
-	brain->ideas[3] = "Squirrel!!!!!";
+	brain->ideas[0] = "FOOOD !";
+	brain->ideas[1] = "BALLLLLLL !!!";
+	brain->ideas[2] = "HUMAN !";
+	brain->ideas[3] = "BEE !!!";
 	std::cout << animals[7]->getBrain()->ideas[0] << std::endl;
 
 	*(animals[5]) = *(animals[7]);
