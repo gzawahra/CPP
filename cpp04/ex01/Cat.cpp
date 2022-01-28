@@ -8,7 +8,7 @@ Cat::Cat( void )
 	return;
 }
 
-Cat::Cat( Cat const & src )
+Cat::Cat( Cat const & src ) : brain(NULL)
 {
 	std::cout << "Cat has been copied !" << std::endl;
 	*this = src;
@@ -25,6 +25,9 @@ Cat::~Cat( void )
 Cat		&Cat::operator=( Cat const &rhs )
 {
 	std::cout << "Cat has been assigned !" << std::endl;
+	if (this->brain)
+        delete (this->brain);
+	this->brain = new Brain();
 	this->type = rhs.getType();
 	*(this->brain) = *(rhs.getBrain());
 	return *this;
@@ -33,6 +36,9 @@ Cat		&Cat::operator=( Cat const &rhs )
 Animal	&Cat::operator=( Animal const &rhs )
 {
 	std::cout << "Animal Cat has been assigned !" << std::endl;
+	if (this->brain)
+        delete (this->brain);
+	this->brain = new Brain();
 	this->type = rhs.getType();
 	*(this->brain) = *(rhs.getBrain());
 	return *this;

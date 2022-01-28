@@ -6,11 +6,8 @@
 
 int	main( void )
 {
-	/*Animal doesntwork;*/
 	AAnimal	*animals[NUMBER_OF_ANIMALS];
-	Brain	*brain;
-
-	/* AAnimal *hello = new AAnimal(); */
+	Brain *brain;
 
 	for (int i = 0; i < NUMBER_OF_ANIMALS; i++)
 	{
@@ -28,13 +25,25 @@ int	main( void )
 	brain->ideas[3] = "BEE !!!";
 	std::cout << animals[7]->getBrain()->ideas[0] << std::endl;
 
-	animals[3]->makeSound();
-	animals[6]->makeSound();
-	std::cout << "Type: " << animals[2]->getType() << std::endl;
-
 	*(animals[5]) = *(animals[7]);
 	std::cout << animals[5]->getBrain()->ideas[2] << std::endl;
 
+	Dog	garfield;
+	Dog	*cpy = new Dog(garfield);
+	std::cout << cpy->getBrain()->ideas[0] << std::endl;
+	std::cout << garfield.getBrain()->ideas[0] << std::endl;
+	delete cpy;
+
+	Dog basic;
+	{
+		Dog tmp = basic;
+	}
+	Cat basic1;
+	{
+		Cat tmp2 = basic1;
+	}
+
+	
 	for (int i = 0; i < NUMBER_OF_ANIMALS; i++)
 		delete animals[i];
 }

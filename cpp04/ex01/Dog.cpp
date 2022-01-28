@@ -8,7 +8,7 @@ Dog::Dog( void )
 	return;
 }
 
-Dog::Dog( Dog const & src )
+Dog::Dog( Dog const & src ) : brain(NULL)
 {
 	std::cout << "Dog has been copied !" << std::endl;
 	*this = src;
@@ -25,6 +25,9 @@ Dog::~Dog( void )
 Dog		&Dog::operator=( Dog const & rhs )
 {
 	std::cout << "Dog has been assigned !" << std::endl;
+	if (this->brain)
+        delete (this->brain);
+	this->brain = new Brain();
 	this->type = rhs.getType();
 	*(this->brain) = *(rhs.getBrain());
 	return *this;
@@ -33,6 +36,9 @@ Dog		&Dog::operator=( Dog const & rhs )
 Animal	&Dog::operator=( Animal const &rhs )
 {
 	std::cout << "Animal Dog has been assigned !" << std::endl;
+	if (this->brain)
+        delete (this->brain);
+	this->brain = new Brain();
 	this->type = rhs.getType();
 	*(this->brain) = *(rhs.getBrain());
 	return *this;

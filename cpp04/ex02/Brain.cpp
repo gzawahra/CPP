@@ -3,6 +3,8 @@
 Brain::Brain( void )
 {
 	std::cout << "Brain is created !" << std::endl;
+	for (int i = 0; i < Brain::numberOfIdeas; i++)
+		this->ideas[i] = "idea";
 	return;
 }
 

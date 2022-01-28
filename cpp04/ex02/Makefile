@@ -37,13 +37,7 @@ OBJS = $(addprefix $(PATH_OBJS), $(SRCS:.cpp=.o))
 ################### FLAGS #######################
 #-----------------------------------------------#
 CXXFLAGS +=	-Wall -Wextra -Werror				\
-			-std=c++98
-ifeq ($(d), 0)
-	CXXFLAGS	+= -Wpadded
-	CXXFLAGS	+= -g3
-	CXXFLAGS	+= -fsanitize=address,undefined
-endif
-
+			-std=c++98 -g3
 #-----------------------------------------------#
 ################# INCLUDES ######################
 #-----------------------------------------------#
