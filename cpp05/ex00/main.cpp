@@ -10,15 +10,15 @@ int
 	Bureaucrat	bureaucrat2("Antoine", 149);
 
 	std::cout << bureaucrat1 << std::endl;
-	bureaucrat1.upgrade();
+	bureaucrat1.incrementGrade(1);
 	std::cout << bureaucrat1 << std::endl;
 	//Error
-	bureaucrat1.upgrade();
+	bureaucrat1.incrementGrade(1);
 	std::cout << bureaucrat1 << std::endl;
 
 	std::cout << bureaucrat2 << std::endl;
 	//Error
-	bureaucrat2.downgrade();
+	bureaucrat2.decrementGrade(1);
 	std::cout << bureaucrat2 << std::endl;
 	
 	//Error

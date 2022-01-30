@@ -1,25 +1,96 @@
-SRCS		=	main.cpp \
-				Bureaucrat.cpp \
-				Form.cpp \
-				ShrubberyCreationForm.cpp \
-				RobotomyRequestForm.cpp \
-				PresidentialPardonForm.cpp \
-				Intern.cpp
-OBJS		= ${SRCS:.cpp=.o}
-CPPC		= clang++
-CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
-NAME		= ex03
-RM			= rm -f
+#-----------------------------------------------#
+################# PROG_NAME #####################
+#-----------------------------------------------#
+NAME = Politics
 
-%.o :		%.cpp
-			${CPPC} ${CPPFLAGS} -c $<
-all :		${NAME}
-${NAME} :	${OBJS}
-			${CPPC} -o ${NAME} ${OBJS}
-clean :
-			${RM} ${OBJS}
-fclean :	clean
-			${RM} ${NAME}
-re :		fclean all
-.PHONY :
-			all ${NAME} clean fclean re
+#-----------------------------------------------#
+################## COMPILO ######################
+#-----------------------------------------------#
+CXX = clang++
+
+#-----------------------------------------------#
+################## SOURCES ######################
+#-----------------------------------------------#
+SRCS +=		Bureaucrat.cpp					\
+			Form.cpp						\
+			PresidentialPardonForm.cpp		\
+			ShrubberyCreationForm.cpp		\
+			RobotomyRequestForm.cpp			\
+			Intern.cpp						\
+			main.cpp	
+vpath %.cpp $(PATH_SRCS)
+
+#-----------------------------------------------#
+################## HEADERS ######################
+#-----------------------------------------------#
+HEADERS		+=	Bureaucrat.hpp				\
+				Form.hpp					\
+				PresidentialPardonForm.hpp	\
+				ShrubberyCreationForm.hpp	\
+				RobotomyRequestForm.hpp		\
+				Intern.hpp					\
+
+vpath %.h $(PATH_HEAD)
+
+#-----------------------------------------------#
+################## OBJECTS ######################
+#-----------------------------------------------#
+OBJS = $(addprefix $(PATH_OBJS), $(SRCS:.cpp=.o))
+
+#-----------------------------------------------#
+################### FLAGS #######################
+#-----------------------------------------------#
+CXXFLAGS +=	-Wall -Wextra -Werror				\
+			-std=c++98
+ifeq ($(d), 0)
+	CXXFLAGS	+= -Wpadded
+	CXXFLAGS	+= -g3
+	CXXFLAGS	+= -fsanitize=address,undefined
+endif
+
+#-----------------------------------------------#
+################# INCLUDES ######################
+#-----------------------------------------------#
+INCLUDES	=	-I $(PATH_HEAD)					\
+
+
+#-----------------------------------------------#
+################### PATHS #######################
+#-----------------------------------------------#
+PATH_HEAD	=	./
+PATH_SRCS	=	./
+PATH_OBJS	=	./objects/
+
+#-----------------------------------------------#
+################# LIBRARIES #####################
+#-----------------------------------------------#
+ifeq ($(d), 0)
+	LDFLAGS		+= -fsanitize=address,undefined
+endif
+
+#-----------------------------------------------#
+################### RULES #######################
+#-----------------------------------------------#
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(CXX) -o $@ $^ $(LDFLAGS) $(LDLIBS) $(CXXFLAGS)
+
+$(PATH_OBJS)%.o: %.cpp
+	$(CXX) -o $@ -c $< $(CXXFLAGS) $(INCLUDES)
+
+$(OBJS): Makefile $(HEADERS) | $(PATH_OBJS)
+
+$(PATH_OBJS):
+	mkdir $@
+
+clean:
+	rm -rf $(PATH_OBJS)
+
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
