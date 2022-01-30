@@ -2,33 +2,33 @@
 
 WrongAnimal::WrongAnimal( void ): type("")
 {
-	std::cout << "Default constructor for WrongAnimal called" << std::endl;
+	std::cout << "WrongAnimal is born !" << std::endl;
 	return;
 }
 
 WrongAnimal::WrongAnimal( WrongAnimal const & src )
 {
-	std::cout << "Copy constructor for WrongAnimal called" << std::endl;
+	std::cout << "WrongAnimal has been copied !" << std::endl;
 	*this = src;
 	return;
 }
 
 WrongAnimal::~WrongAnimal( void )
 {
-	std::cout << "Destructor for WrongAnimal called" << std::endl;
+	std::cout << "WrongAnimal died X(" << std::endl;
 	return;
 }
 
 WrongAnimal &	WrongAnimal::operator=( WrongAnimal const & rhs )
 {
-	std::cout << "Assignement operator for WrongAnimal called" << std::endl;
+	std::cout << "WrongAnimal has been assigned !" << std::endl;
 	this->type = rhs.getType();
 	return *this;
 }
 
 void	WrongAnimal::makeSound( void ) const
 {
-	std::cout << "The sound every single animal on earth makes... I guess"
+	std::cout << "Wrong random animal sounds ...."
 		<< std::endl;
 }
 

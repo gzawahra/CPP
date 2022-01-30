@@ -3,20 +3,20 @@
 Dog::Dog( void )
 {
 	this->type = "Dog";
-	std::cout << "Default constructor for Dog called" << std::endl;
+	std::cout << "Dog is born !" << std::endl;
 	return;
 }
 
 Dog::Dog( Dog const & src )
 {
-	std::cout << "Copy constructor for Dog called" << std::endl;
+	std::cout << "Dog has been copied" << std::endl;
 	*this = src;
 	return;
 }
 
 Dog::~Dog( void )
 {
-	std::cout << "Destructor for Dog called" << std::endl;
+	std::cout << "Dog died X(" << std::endl;
 	return;
 }
 

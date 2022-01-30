@@ -2,7 +2,7 @@
 
 AAnimal::~AAnimal( void )
 {
-	std::cout << "Destructor for AAnimal called" << std::endl;
+	std::cout << "AAnimal died X(" << std::endl;
 	return;
 }
 

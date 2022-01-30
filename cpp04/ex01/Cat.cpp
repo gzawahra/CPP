@@ -4,13 +4,13 @@ Cat::Cat( void )
 {
 	this->type = "Cat";
 	this->brain = new Brain();
-	std::cout << "Default constructor for Cat called" << std::endl;
+	std::cout << "Cat is born !" << std::endl;
 	return;
 }
 
-Cat::Cat( Cat const & src )
+Cat::Cat( Cat const & src ) : brain(NULL)
 {
-	std::cout << "Copy constructor for Cat called" << std::endl;
+	std::cout << "Cat has been copied !" << std::endl;
 	*this = src;
 	return;
 }
@@ -18,13 +18,16 @@ Cat::Cat( Cat const & src )
 Cat::~Cat( void )
 {
 	delete this->brain;
-	std::cout << "Destructor for Cat called" << std::endl;
+	std::cout << "Cat died X(" << std::endl;
 	return;
 }
 
 Cat		&Cat::operator=( Cat const &rhs )
 {
-	std::cout << "Assignement operator for Cat called" << std::endl;
+	std::cout << "Cat has been assigned !" << std::endl;
+	if (this->brain)
+        delete (this->brain);
+	this->brain = new Brain();
 	this->type = rhs.getType();
 	*(this->brain) = *(rhs.getBrain());
 	return *this;
@@ -32,7 +35,10 @@ Cat		&Cat::operator=( Cat const &rhs )
 
 Animal	&Cat::operator=( Animal const &rhs )
 {
-	std::cout << "Animal Assignement operator for Cat called" << std::endl;
+	std::cout << "Animal Cat has been assigned !" << std::endl;
+	if (this->brain)
+        delete (this->brain);
+	this->brain = new Brain();
 	this->type = rhs.getType();
 	*(this->brain) = *(rhs.getBrain());
 	return *this;

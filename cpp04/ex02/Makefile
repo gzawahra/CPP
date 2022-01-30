@@ -14,8 +14,6 @@ CXX = clang++
 SRCS +=		AAnimal.cpp		\
 			Cat.cpp			\
 			Dog.cpp			\
-			WrongAnimal.cpp	\
-			WrongCat.cpp	\
 			Brain.cpp		\
 			main.cpp	
 vpath %.cpp $(PATH_SRCS)
@@ -26,8 +24,6 @@ vpath %.cpp $(PATH_SRCS)
 HEADERS	+=	AAnimal.hpp		\
 			Cat.hpp			\
 			Dog.hpp			\
-			WrongAnimal.hpp	\
-			WrongCat.hpp	\
 			Brain.hpp
 
 vpath %.h $(PATH_HEAD)
@@ -41,13 +37,7 @@ OBJS = $(addprefix $(PATH_OBJS), $(SRCS:.cpp=.o))
 ################### FLAGS #######################
 #-----------------------------------------------#
 CXXFLAGS +=	-Wall -Wextra -Werror				\
-			-std=c++98
-ifeq ($(d), 0)
-	CXXFLAGS	+= -Wpadded
-	CXXFLAGS	+= -g3
-	CXXFLAGS	+= -fsanitize=address,undefined
-endif
-
+			-std=c++98 -g3
 #-----------------------------------------------#
 ################# INCLUDES ######################
 #-----------------------------------------------#

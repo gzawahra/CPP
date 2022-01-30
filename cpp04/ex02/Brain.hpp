@@ -15,9 +15,7 @@ public:
 	Brain( void );
 	Brain( const Brain &src );
 	~Brain( void );
-
 	Brain	&operator=( const Brain &other );
-
 	std::string		ideas[Brain::numberOfIdeas];
 
 };
