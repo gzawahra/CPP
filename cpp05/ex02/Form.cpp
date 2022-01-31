@@ -50,32 +50,31 @@ std::string const
 	return (_name);
 }
 
-bool
-	Form::getIsSigned(void) const
+bool Form::getIsSigned(void) const
 {
 	return (_issigned);
 }
 
-unsigned int
-	Form::getGradeToSign(void) const
+
+unsigned int	Form::getGradeToSign(void) const
 {
 	return (_grade_to_sign);
 }
 
-unsigned int
-	Form::getGradeToExec(void) const
+
+unsigned int Form::getGradeToExec(void) const
 {
 	return (_grade_to_exec);
 }
 
-std::string const
-	Form::getTarget(void) const
+
+std::string const Form::getTarget(void) const
 {
 	return (_target);
 }
 
-void
-	Form::beSigned(Bureaucrat &b)
+
+void Form::beSigned(Bureaucrat &b)
 {
 	try
 	{
@@ -90,14 +89,14 @@ void
 	}
 }
 
-const char
-	*Form::GradeTooHighException::what() const throw()
+
+const char *Form::GradeTooHighException::what() const throw()
 {
 	return ("Grade too high");
 }
 
-const char
-	*Form::GradeTooLowException::what() const throw()
+
+const char *Form::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low");
 }
@@ -108,8 +107,7 @@ const char
 	return ("Form not signed");
 }
 
-std::ostream
-	&operator<<(std::ostream &o, const Form &i)
+std::ostream &operator<<(std::ostream &o, const Form &i)
 {
 	std::cout << i.getName() << ". grade required to sign: " << i.getGradeToSign();
 	std::cout << ". grade required to execute : " << i.getGradeToExec();

@@ -2,8 +2,8 @@
 
 Bureaucrat::Bureaucrat( void ): _name(""), _grade(Bureaucrat::lowestGrade)
 {
-	if (Bureaucrat::verbose)
-		std::cout << "Default constructor for Bureaucrat called" << std::endl;
+
+	std::cout << "Default constructor for Bureaucrat called" << std::endl;
 	return;
 }
 
@@ -11,23 +11,23 @@ Bureaucrat::Bureaucrat( const std::string &name, int grade ): _name(name),
 	_grade(grade)
 {
 	checkGrade();
-	if (Bureaucrat::verbose)
-		std::cout << "Standard constructor for Bureaucrat called" << std::endl;
+
+	std::cout << "Standard constructor for Bureaucrat called" << std::endl;
 	return;
 }
 
 Bureaucrat::Bureaucrat( Bureaucrat const & src )
 {
-	if (Bureaucrat::verbose)
-		std::cout << "Copy constructor for Bureaucrat called" << std::endl;
+
+	std::cout << "Copy constructor for Bureaucrat called" << std::endl;
 	*this = src;
 	return;
 }
 
 Bureaucrat::~Bureaucrat( void )
 {
-	if (Bureaucrat::verbose)
-		std::cout << "Destructor for Bureaucrat called" << std::endl;
+
+	std::cout << "Destructor for Bureaucrat called" << std::endl;
 	return;
 }
 
@@ -36,8 +36,8 @@ Bureaucrat &	Bureaucrat::operator=( Bureaucrat const & rhs )
 	this->_grade = rhs._grade;
 	std::cout << "Name is const and can't be overwritten, only grade was copied"
 		<< std::endl;
-	if (Bureaucrat::verbose)
-		std::cout << "Assignement operator for Bureaucrat called" << std::endl;
+
+	std::cout << "Assignement operator for Bureaucrat called" << std::endl;
 	return *this;
 }
 
@@ -51,24 +51,34 @@ int	Bureaucrat::getGrade( void ) const
 	return this->_grade;
 }
 
-void	Bureaucrat::incrementGrade( int quantity )
+void	Bureaucrat::incrGrade( int quantity )
 {
-	if (Bureaucrat::verbose)
-		std::cout << "incrementGrade from Bureaucrat called with value "
-			<< quantity << std::endl;
+	std::cout << "incrementGrade from Bureaucrat called with value "
+		<< quantity << std::endl;
 	this->_grade -= quantity;
 	checkGrade();
 }
-
-void	Bureaucrat::decrementGrade( int quantity )
+void	Bureaucrat::incrGrade( void )
 {
-	if (Bureaucrat::verbose)
-		std::cout << "decrementGrade from Bureaucrat called with value "
-			<< quantity << std::endl;
+	std::cout << "incrementGrade from Bureaucrat called with value 1."
+		<< std::endl;
+	this->_grade--;
+	checkGrade();
+}
+void	Bureaucrat::decrGrade( int quantity )
+{
+	std::cout << "decrementGrade from Bureaucrat called with value "
+		<< quantity << std::endl;
 	this->_grade += quantity;
 	checkGrade();
 }
-
+void	Bureaucrat::decrGrade( void )
+{
+	std::cout << "decrementGrade from Bureaucrat called with value 1."
+		<< std::endl;
+	this->_grade++;
+	checkGrade();
+}
 void	Bureaucrat::checkGrade( void ) const
 {
 	if (this->_grade < Bureaucrat::highestGrade)

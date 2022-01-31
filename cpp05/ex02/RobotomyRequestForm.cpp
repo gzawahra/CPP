@@ -32,13 +32,13 @@ void
 			throw FormNotSignedException();
 		else if (executor.getGrade() > getGradeToExec())
 			throw GradeTooLowException();
-		std::cout << "*Bruits de perceuse*" << std::endl;
+		std::cout << "*Drilling noise*" << std::endl;
 		std::srand(std::time(0));
 		random_number = std::rand() % 2;
 		if (random_number == 1)
-			std::cout << "Robotomization rate" << std::endl;
+			std::cout << "Robotomy failed" << std::endl;
 		else
-			std::cout << "Robotomization reussie" << std::endl;
+			std::cout << "Robotomy successful" << std::endl;
 	}
 	catch (FormNotSignedException &e)
 	{

@@ -46,7 +46,7 @@ void
 		ofs << "                 00000000000000\n";
 		ofs << "              oooooo  00000000  o88o\n";
 		ofs << "           ooOOOOOOOoo  ```''  888888\n";
-		ofs << "         OOOOOOOOOOOO'.qQQQQq. `8888'\n";
+		ofs << "         OOOOOOOOOOOO'.qGZGZq. `8888'\n";
 		ofs << "        oOOOOOOOOOO'.QQQQQQQQQQ/.88'\n";
 		ofs << "        OOOOOOOOOO'.QQQQQQQQQQ/ /q\n";
 		ofs << "         OOOOOOOOO QQQQQQQQQQ/ /QQ\n";

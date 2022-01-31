@@ -54,10 +54,10 @@ Form
 		if (forms[i].name == name)
 		{
 			r = forms[i].f(target);
-			std::cout << "Intern creates " << r->getName() << std::endl;
+			std::cout << "Intern created form " << r->getName() << std::endl;
 			return (r);
 		}
 	}
-	std::cout << "Intern could not create " << name << std::endl;
+	std::cout << "Intern could not create form" << name << std::endl;
 	return (r);
 }

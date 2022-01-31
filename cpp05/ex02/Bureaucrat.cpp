@@ -37,57 +37,61 @@ Bureaucrat::Bureaucrat(Bureaucrat const &src)
 	_grade = src._grade;
 }
 
-Bureaucrat
-	&Bureaucrat::operator=(Bureaucrat const &rhs)
+Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rhs)
 {
 	_grade = rhs._grade;
 	return (*this);
 }
 
-std::string const
-	Bureaucrat::getName(void) const
+std::string const Bureaucrat::getName(void) const
 {
 	return (_name);
 }
 
-unsigned int
-	Bureaucrat::getGrade(void) const
+
+unsigned int	Bureaucrat::getGrade(void) const
 {
 	return (_grade);
 }
 
-void
-	Bureaucrat::upgrade(void)
+void	Bureaucrat::incrGrade( int quantity )
 {
-	try
-	{
-		if (_grade == 1)
-			throw GradeTooHighException();
-		_grade--;
-	}
-	catch (GradeTooHighException &e)
-	{
-		std::cout << "Can't upgrade bureaucrat, grade is too high" << std::endl;
-	}
+	std::cout << "incrementGrade from Bureaucrat called with value "
+		<< quantity << std::endl;
+	this->_grade -= quantity;
+	checkGrade();
+}
+void	Bureaucrat::incrGrade( void )
+{
+	std::cout << "incrementGrade from Bureaucrat called with value 1."
+		<< std::endl;
+	this->_grade--;
+	checkGrade();
+}
+void	Bureaucrat::decrGrade( int quantity )
+{
+	std::cout << "decrementGrade from Bureaucrat called with value "
+		<< quantity << std::endl;
+	this->_grade += quantity;
+	checkGrade();
+}
+void	Bureaucrat::decrGrade( void )
+{
+	std::cout << "decrementGrade from Bureaucrat called with value 1."
+		<< std::endl;
+	this->_grade++;
+	checkGrade();
+}
+void	Bureaucrat::checkGrade( void ) const
+{
+	if (this->_grade < Bureaucrat::highestGrade)
+		throw Bureaucrat::GradeTooHighException();
+	else if (this->_grade > Bureaucrat::lowestGrade)
+		throw Bureaucrat::GradeTooLowException();
 }
 
-void
-	Bureaucrat::downgrade(void)
-{
-	try
-	{
-		if (_grade == 150)
-			throw GradeTooLowException();
-		_grade++;
-	}
-	catch (GradeTooLowException &e)
-	{
-		std::cout << "Can't downgrade bureaucrat, grade is too low" << std::endl;
-	}
-}
 
-void
-	Bureaucrat::signForm(Form &f) const
+void Bureaucrat::signForm(Form &f) const
 {
 	if (_grade <= f.getGradeToSign())
 		std::cout << _name << " signs " << f.getName() << std::endl;
@@ -95,8 +99,8 @@ void
 		std::cout << _name << " can't sign because grade " << _grade << " < " << f.getGradeToSign() << std::endl;
 }
 
-void
-	Bureaucrat::executeForm(Form &f) const
+
+void Bureaucrat::executeForm(Form &f) const
 {
 	if (!f.getIsSigned())
 		std::cout << _name << " can't execute form because it's not signed" << std::endl;
@@ -106,14 +110,14 @@ void
 		std::cout << _name << " executes " << f.getName() << std::endl;
 }
 
-const char
-	*Bureaucrat::GradeTooHighException::what() const throw()
+
+const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Grade too high");
 }
 
-const char
-	*Bureaucrat::GradeTooLowException::what() const throw()
+
+const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low");
 }

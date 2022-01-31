@@ -16,8 +16,11 @@ public:
 	Bureaucrat			&operator=(Bureaucrat const &rhs);
 	std::string const	getName(void) const;
 	unsigned int		getGrade(void) const;
-	void				upgrade(void);
-	void				downgrade(void);
+	void	incrGrade( void );
+	void	decrGrade( void );
+	void	incrGrade( int quantity );
+	void	decrGrade( int quantity );
+	void	checkGrade( void ) const ;
 	void				signForm(Form &f) const;
 	class GradeTooHighException : public std::exception {
 
@@ -36,6 +39,8 @@ public:
 
 private:
 
+	static const int	lowestGrade = 150;
+	static const int	highestGrade = 1;
 	std::string const	_name;
 	unsigned int		_grade;
 
