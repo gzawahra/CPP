@@ -1,72 +1,93 @@
-# Source files directory
-S		= srcs/
-# Object files directory
-O		= objs/
-# Include files directory
-I		= incs/
-# Dependency files directory
-D		= deps/
+#-----------------------------------------------#
+################# PROG_NAME #####################
+#-----------------------------------------------#
+NAME = cast
 
-# Name of your program
-NAME	= identify
+#-----------------------------------------------#
+################## COMPILO ######################
+#-----------------------------------------------#
+CXX = clang++
 
-# list of your source files
-SRCS	= main.cpp A.cpp B.cpp C.cpp Base.cpp
+#-----------------------------------------------#
+################## SOURCES ######################
+#-----------------------------------------------#
+SRCS +=		A.cpp						\
+			B.cpp						\
+			Base.cpp					\
+			C.cpp						\
+			main.cpp					\
 
-# Compiler
-CC		= clang++
-# Compiler flags
-CFLAGS	+= -Wall -Wextra -std=c++98
-# Assembly flags (add the libraries here for linux)
-LDFLAGS	+= 
+vpath %.cpp $(PATH_SRCS)
 
-# The rest is automatic
+#-----------------------------------------------#
+################## HEADERS ######################
+#-----------------------------------------------#
+HEADERS	+=	A.hpp						\
+			B.hpp						\
+			Base.hpp					\
+			C.hpp						\
 
-CFLAGS	+= -I$I
+vpath %.h $(PATH_HEAD)
 
-SRCS	:= $(foreach file,$(SRCS),$S$(file))
-OBJS	= $(SRCS:$S%=$O%.o)
-DEPS	= $(SRCS:$S%=$D%.d)
+#-----------------------------------------------#
+################## OBJECTS ######################
+#-----------------------------------------------#
+OBJS = $(addprefix $(PATH_OBJS), $(SRCS:.cpp=.o))
 
-RM		= /bin/rm -rf
+#-----------------------------------------------#
+################### FLAGS #######################
+#-----------------------------------------------#
+CXXFLAGS +=	-Wall -Wextra -Werror				\
+			-std=c++98
+ifeq ($(d), 0)
+	CXXFLAGS	+= -Wpadded
+	CXXFLAGS	+= -g3
+	CXXFLAGS	+= -fsanitize=address,undefined
+endif
 
-.PHONY: all clean fclean re test
+#-----------------------------------------------#
+################# INCLUDES ######################
+#-----------------------------------------------#
+INCLUDES	=	-I $(PATH_HEAD)					\
+
+
+#-----------------------------------------------#
+################### PATHS #######################
+#-----------------------------------------------#
+PATH_HEAD	=	./
+PATH_SRCS	=	./
+PATH_OBJS	=	./objects/
+
+#-----------------------------------------------#
+################# LIBRARIES #####################
+#-----------------------------------------------#
+ifeq ($(d), 0)
+	LDFLAGS		+= -fsanitize=address,undefined
+endif
+
+#-----------------------------------------------#
+################### RULES #######################
+#-----------------------------------------------#
 
 all: $(NAME)
 
-$O:
-	@mkdir $@
-
-$(OBJS): | $O
-
-$(OBJS): $O%.o: $S%
-	@echo "Compiling $^: "
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "✓"
-
-$D:
-	@mkdir $@
-
-$(DEPS): | $D
-
-$(DEPS): $D%.d: $S%
-	@$(CC) $(CFLAGS) -MM -MF $@ -MT "$O$*.o $@" $<
-
 $(NAME): $(OBJS)
-	@echo "Assembling $(NAME)"
-	@$(CC) $(LDFLAGS) $^ -o $@
+	$(CXX) -o $@ $^ $(LDFLAGS) $(LDLIBS) $(CXXFLAGS)
+
+$(PATH_OBJS)%.o: %.cpp
+	$(CXX) -o $@ -c $< $(CXXFLAGS) $(INCLUDES)
+
+$(OBJS): Makefile $(HEADERS) | $(PATH_OBJS)
+
+$(PATH_OBJS):
+	mkdir $@
 
 clean:
-	@echo "Cleaning up..."
-	@$(RM) $D $O
+	rm -rf $(PATH_OBJS)
 
 fclean: clean
-	@echo "Everything!"
-	@$(RM) $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
 
-test: $(NAME)
-	./$(NAME)
-
--include $(DEPS)
+.PHONY: all clean fclean re

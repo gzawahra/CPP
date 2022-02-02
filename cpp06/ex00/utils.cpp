@@ -9,7 +9,7 @@ bool	ft_isdigit( char c )
 
 void	print_help( void )
 {
-	std::cout << "./convert {char, int, float or double}" << std::endl;
+	std::cout << "./cast {char, int, float or double}" << std::endl;
 }
 
 bool	canConvertToInt( double number )
