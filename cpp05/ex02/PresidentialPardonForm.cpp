@@ -30,7 +30,7 @@ void
 			throw FormNotSignedException();
 		else if (executor.getGrade() > getGradeToExec())
 			throw GradeTooLowException();
-		std::cout << getTarget() << " a ete pardonne par Zafod Beeblebrox" << std::endl;
+		std::cout << getTarget() << " pardoned by Zafod Beeblebrox" << std::endl;
 	}
 	catch (FormNotSignedException &e)
 	{

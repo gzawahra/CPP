@@ -1,30 +1,84 @@
-#include <string>
-#include <iostream>
-
 #include "Bureaucrat.hpp"
 
-int
-	main(void)
+int main ()
 {
-	Bureaucrat	bureaucrat1("Thomas", 0);
-	Bureaucrat	bureaucrat2("Antoine", 149);
+	std::cout << "====Test_grade===="<< std::endl;
+	{
+		
+		for (int i = -4; i < 155; i++)
+		{
+			std::cout << "i = " << i << "\t\t";
+			try
+			{
+				Bureaucrat b1("Bureaucrat", i);
+				std::cout << b1 << std::endl;
+			}
+			catch (std::exception &e)
+			{
+				std::cerr << e.what() << std::endl;
+			}
+			if (i == 5)
+				i = 145;
+		}
+	}
+	std::cout << std::endl << "====Test_incr/decr===="<< std::endl;
+	try
+	{
+		Bureaucrat incr_decr("incr_decr", 150);
+		std::cout << incr_decr << std::endl;
+		incr_decr.incrGrade();
+		std::cout << incr_decr << std::endl;
+		incr_decr.decrGrade();
+		std::cout << incr_decr << std::endl;		
+		incr_decr.decrGrade();
+		std::cout << incr_decr << std::endl;		
+		incr_decr.decrGrade(15);
+		std::cout << incr_decr << std::endl;	
+		incr_decr.decrGrade();
+		std::cout << incr_decr << std::endl;		
+		incr_decr.decrGrade();
+		std::cout << incr_decr << std::endl;	
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 
-	std::cout << bureaucrat1 << std::endl;
-	bureaucrat1.incrementGrade(1);
-	std::cout << bureaucrat1 << std::endl;
-	//Error
-	bureaucrat1.incrementGrade(1);
-	std::cout << bureaucrat1 << std::endl;
+	std::cout << std::endl << "====Test_highGrade===="<< std::endl;
+	try
+	{
+		Bureaucrat high("highGrade", 1);
+		std::cout << high << std::endl;
+		high.incrGrade();
+		std::cout << high << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 
-	std::cout << bureaucrat2 << std::endl;
-	//Error
-	bureaucrat2.decrementGrade(1);
-	std::cout << bureaucrat2 << std::endl;
-	
-	//Error
-	//Bureaucrat	bureaucrat3("Jean", 0);
+	std::cout << std::endl << "====Test_LowGrade===="<< std::endl;
+	try
+	{
+		Bureaucrat low("lowGrade", 1);
+		std::cout << low << std::endl;
+		low.decrGrade();
+		std::cout << low << std::endl;		
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 
-	//Error
-	//Bureaucrat	bureaucrat4("Henri", 151);
-	return (0);
+	std::cout << std::endl << "====Test_Copy===="<< std::endl;
+	Bureaucrat low("lowGrade", 1);
+	Bureaucrat tmp3(low);
+	std::cout << tmp3 << std::endl;	
+	Bureaucrat tmp("test", 150);
+	std::cout << low << std::endl;
+	tmp = tmp3;
+	std::cout << tmp << std::endl;
+	Bureaucrat tmp2(tmp);
+	std::cout << tmp2 << std::endl;
+	return 0;
 }

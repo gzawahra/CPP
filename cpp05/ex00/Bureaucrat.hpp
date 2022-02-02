@@ -1,16 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pohl <pohl@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 09:44:43 by pohl              #+#    #+#             */
-/*   Updated: 2021/10/13 10:25:55 by pohl             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
@@ -30,9 +17,10 @@ public:
 
 	const std::string	&getName( void ) const;
 	int					getGrade( void ) const;
-
-	void	incrementGrade( int quantity );
-	void	decrementGrade( int quantity );
+	void	incrGrade( void );
+	void	decrGrade( void );
+	void	incrGrade( int quantity );
+	void	decrGrade( int quantity );
 
 	static bool	verbose;
 
@@ -54,7 +42,7 @@ public:
 	public:
 		virtual const char* what() const throw()
 		{
-			return ("The grade you set is too high");
+			return ("The grade too high");
 		}
 	};
 
@@ -63,7 +51,7 @@ public:
 	public:
 		virtual const char* what() const throw()
 		{
-			return ("The grade you set is too low");
+			return ("The grade too low");
 		}
 	};
 

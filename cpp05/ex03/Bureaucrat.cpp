@@ -56,36 +56,41 @@ unsigned int
 	return (_grade);
 }
 
-void
-	Bureaucrat::upgrade(void)
+void	Bureaucrat::incrGrade( int quantity )
 {
-	try
-	{
-		if (_grade == 1)
-			throw GradeTooHighException();
-		_grade--;
-	}
-	catch (GradeTooHighException &e)
-	{
-		std::cout << "Can't upgrade bureaucrat, grade is too high" << std::endl;
-	}
+	std::cout << "incrementGrade from Bureaucrat called with value "
+		<< quantity << std::endl;
+	this->_grade -= quantity;
+	checkGrade();
 }
-
-void
-	Bureaucrat::downgrade(void)
+void	Bureaucrat::incrGrade( void )
 {
-	try
-	{
-		if (_grade == 150)
-			throw GradeTooLowException();
-		_grade++;
-	}
-	catch (GradeTooLowException &e)
-	{
-		std::cout << "Can't downgrade bureaucrat, grade is too low" << std::endl;
-	}
+	std::cout << "incrementGrade from Bureaucrat called with value 1."
+		<< std::endl;
+	this->_grade--;
+	checkGrade();
 }
-
+void	Bureaucrat::decrGrade( int quantity )
+{
+	std::cout << "decrementGrade from Bureaucrat called with value "
+		<< quantity << std::endl;
+	this->_grade += quantity;
+	checkGrade();
+}
+void	Bureaucrat::decrGrade( void )
+{
+	std::cout << "decrementGrade from Bureaucrat called with value 1."
+		<< std::endl;
+	this->_grade++;
+	checkGrade();
+}
+void	Bureaucrat::checkGrade( void ) const
+{
+	if (this->_grade < Bureaucrat::highestGrade)
+		throw Bureaucrat::GradeTooHighException();
+	else if (this->_grade > Bureaucrat::lowestGrade)
+		throw Bureaucrat::GradeTooLowException();
+}
 void
 	Bureaucrat::signForm(Form &f) const
 {
