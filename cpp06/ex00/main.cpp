@@ -1,25 +1,20 @@
-#include "TypeAnalyst.hpp"
-#include "utils.hpp"
+#include "Convert.hpp"
 
-int	main( int argc, char **argv )
+int main(int argc, char **argv)
 {
-	TypeAnalyst typeAnalyst;
-
+	if (argc != 2) 
+	{
+		std::cerr << "Wrong number of params!" << std::endl;
+		return 1;
+	}
 	try
 	{
-		if (argc == 1)
-			throw (TypeAnalyst::EmptyInput());
-		for (int i = 1; i < argc; i++)
-		{
-			typeAnalyst.analyseNewInput(argv[i]);
-			typeAnalyst.printTypes();
-			if (i + 1 < argc)
-				std::cout << std::endl;
-		}
+		Convert num(argv[1]);
+		num.print_all();
 	}
-	catch (std::exception &e)
+	catch(const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
-		print_help();
+		std::cerr << e.what() << std::endl;
 	}
+	return 0;
 }

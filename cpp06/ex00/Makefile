@@ -11,16 +11,14 @@ CXX = clang++
 #-----------------------------------------------#
 ################## SOURCES ######################
 #-----------------------------------------------#
-SRCS +=		utils.cpp						\
-			TypeAnalyst.cpp					\
+SRCS +=		Convert.cpp						\
 			main.cpp	
 vpath %.cpp $(PATH_SRCS)
 
 #-----------------------------------------------#
 ################## HEADERS ######################
 #-----------------------------------------------#
-HEADERS	+=	utils.hpp						\
-			TypeAnalyst.hpp					\
+HEADERS	+=	Convert.hpp						\
 
 vpath %.h $(PATH_HEAD)
 
