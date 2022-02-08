@@ -13,6 +13,7 @@ public:
 	{
 		std::cout << "Empty constructor called" << std::endl;
 	}
+
 	Array<T>( const unsigned int size ): _size(size)
 	{
 		std::cout << "Size constructor called" << std::endl;
@@ -20,11 +21,13 @@ public:
 			throw std::overflow_error("Index out of bounds");
 		this->_array = new T[size];
 	}
+
 	Array<T>( const Array<T> &src )
 	{
 		std::cout << "Copy constructor called" << std::endl;
 		*this = src;
 	}
+
 	~Array<T>( void )
 	{
 		std::cout << "Destructor called" << std::endl;
@@ -45,7 +48,8 @@ public:
 			this->_array[i] = rhs[i];
 		return *this;
 	}
-	T			&operator[](const int idx) const
+
+	T &operator[](const int idx) const
 	{
 		if (idx >= this->_size || idx < 0)
 			throw std::overflow_error("Index out of bounds");

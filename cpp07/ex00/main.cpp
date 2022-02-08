@@ -20,7 +20,7 @@ int	main( void )
 	std::cout << "c: " << c << " and d: " << d << std::endl;
 	std::cout << "e: " << e << " and f: " << f << std::endl;
 	std::cout << "g: " << g << " and h: " << h << std::endl;
-	std::cout << "Now calling swap on all these..." << std::endl;
+	std::cout << "swaping" << std::endl;
 	::swap(a, b);
 	::swap(c, d);
 	::swap(e, f);
@@ -37,4 +37,34 @@ int	main( void )
 	std::cout << "max(e, f): " << ::max(e, f) << std::endl;
 	std::cout << "min(g, h): " << ::min(g, h) << std::endl;
 	std::cout << "max(g, h): " << ::max(g, h) << std::endl;
+
+
 }
+
+// class Awesome
+// {
+// 	public:
+// 		Awesome(void) : _n(0) { }
+// 		Awesome (int n) : _n(n) {}
+// 		Awesome & operator= (Awesome & a) { _n= a._n; return *this; }
+// 		bool operator==( Awesome const & rhs ) const { return (this->_n == rhs._n); }
+// 		bool operator!=( Awesome const & rhs ) const{ return (this->_n != rhs._n); }
+// 		bool operator>( Awesome const & rhs ) const { return (this->_n > rhs._n); }
+// 		bool operator<( Awesome const & rhs ) const { return (this->_n<rhs._n); }
+// 		bool operator>=( Awesome const & rhs ) const { return (this->_n >= rhs._n); }
+// 		bool operator<=( Awesome const & rhs ) const { return (this->_n <= rhs._n); }
+// 		int get_n() const { return _n; }
+// 	private:
+// 		int _n;
+// };
+// std::ostream& operator<<(std::ostream &o, const Awesome &a) { o<<a.get_n(); return o; }
+
+// int main(void)
+// {
+// 	Awesome a(2), b(4);
+// 	swap(a, b);
+// 	std::cout << a <<" "<<b<< std::endl;
+// 	std::cout << max(a, b) << std::endl;
+// 	std::cout << min(a, b) << std::endl;
+// 	return(0);
+// }
