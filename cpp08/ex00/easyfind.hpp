@@ -1,28 +1,27 @@
-#ifndef _EASYFIND_HPP
-# define _EASYFIND_HPP
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
 
-#include <exception>
-#include <iostream>
+# include <iostream>
+# include <vector>
+# include <algorithm>
 
-class OccurenceNotFoundException : public std::exception {
-	public:
-		virtual const char* what() const throw() {
-			return ("Not found any occurences on the container");
-		}
+class EndOfContainer: public std::exception 
+{
+	virtual const char* what() const throw()
+	{
+		return ("Nothing in Container");
+	}
 };
 
 template<typename T>
-void		easyfind(T container, int n) {
-	typename T::iterator		it = container.begin();
-	typename T::const_iterator	ite = container.end();
-
-	for (; it != ite; ++it) {
-		if (*it == n) {
-			std::cout << "occurence found" << std::endl;
-			return ;
-		}
-	}
-	throw (OccurenceNotFoundException());
+typename T::iterator	easyfind( T &container, int n )
+{
+	typename T::iterator	tmp;
+	
+	tmp = find(container.begin(), container.end(), n);
+	if (tmp == container.end())
+		throw EndOfContainer();
+	return tmp;
 }
 
 #endif

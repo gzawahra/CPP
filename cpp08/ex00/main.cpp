@@ -1,33 +1,26 @@
 #include "easyfind.hpp"
-#include <iostream>
-#include <list>
-#include <vector>
 
-void	displayInt(int i) {
-	std::cout << i << std::endl;
-}
+int main()
+{
+	std::vector<int>			vect;
+	std::vector<int>::iterator	tmp;
 
-int main() {
-
-	std::list<int>	lst;
-
-	lst.push_back(1);
-	lst.push_back(2);
-	lst.push_back(3);
-	lst.push_back(4);
-
-	try { easyfind(lst, 3); }
-	catch (std::exception & e) { std::cout << e.what() << std::endl; }
-
-	std::vector<int>	vec;
-
-	vec.push_back(1);
-	vec.push_back(2);
-	vec.push_back(3);
-	vec.push_back(4);
-	
-	try { easyfind(vec, 32); }
-	catch (std::exception & e) { std::cout << e.what() << std::endl; }
-
+	for (int i = 0; i < 100; i += 2)
+		vect.push_back(i);
+	for (int i = 0; i < 11; i++)
+	{
+		try
+		{
+			std::cout << "Search: " << i * i << std::endl;
+			easyfind(vect, i * i);
+			std::cout << "Sucsess!" << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+			std::cout << "Failure!" << std::endl;
+		}
+		std::cout << std::endl;
+	}
 	return 0;
 }
