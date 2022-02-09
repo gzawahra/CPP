@@ -1,75 +1,61 @@
 #include "Span.hpp"
-#include "algorithm"
 
-Span::Span() {
-	this->array = new unsigned int[0];
-	this->len = 0;
-	this->idx = 0;
+Span::Span(unsigned int N):_N(N)
+{
 }
 
-Span::Span(unsigned int n) {
-	array = new unsigned int[n]();
-	this->len = n;
-	this->idx = 0;
+Span::~Span()
+{
 }
 
-Span::Span(Span const & ref) {
-	*this = ref;
+Span::Span(const Span& origin):
+	_sp(origin._sp),
+	_N(origin._N)
+{}
+
+Span & Span::operator=(const Span& origin)
+{
+	if (this == &origin)
+		return (*this);
+	this->_N = origin._N;
+	this->_sp = origin._sp;
+	return (*this);
 }
 
-Span::~Span() {
-	delete[] this->array;
-}
-
-Span &	Span::operator=(Span const & ref) {
-	this->array = new unsigned int[ref.size()];
-	this->len = ref.size();
-	for (size_t i = 0; i < this->len; i++) {
-		this->array[i] = ref[i];
-	}
-	return *this;
-}
-
-unsigned int & Span::operator[](size_t idx) const {
-	if (idx < 0 || idx >= this->len)
-		throw Span::IndexOutOfRangeException();
+void	Span::addNumber(int n)
+{
+	if (_sp.size() < _N)
+		_sp.push_back(n);
 	else
-		return this->array[idx];
+		throw Span::SpIsFull();
 }
 
-void	Span::addNumber(unsigned int n) {
-	if (idx >= len)
-		throw Span::IndexOutOfRangeException();
-	this->array[idx++] = n;
+long Span::shortestSpan()
+{
+	if(_sp.size() <= 1)
+		throw Span::SpIsTooSmall();
+
+	std::sort(_sp.begin(), _sp.end());
+	long shortest = static_cast<long>(_sp[1]) - static_cast<long>(_sp[0]);
+	for (size_t i = 1; i < _sp.size() - 1; i++)
+		if (static_cast<long>(_sp[i + 1]) - static_cast<long>(_sp[i]) < shortest)
+			shortest = static_cast<long>(_sp[i + 1]) - static_cast<long>(_sp[i]);
+	return (shortest);
 }
 
-void	Span::addRange(unsigned int n, unsigned int times) {
-	for (unsigned int i = 0; i < times; i++) {
-		try { this->addNumber(n); }
-		catch (std::exception & e) {}
-	}
+long Span::longestSpan()
+{
+	if(this->_sp.size() <= 1)
+		throw Span::SpIsTooSmall();
+
+    long min_sp = *std::min_element(_sp.begin(), _sp.end());
+    long max_sp = *std::max_element(_sp.begin(), _sp.end()); 
+	return (static_cast<long>(max_sp) - min_sp);
 }
 
-size_t	Span::size() const {
-	return this->len;
-}
-
-unsigned int	Span::shortestSpan() const {
-	unsigned int min = this->longestSpan();
-	unsigned int range;
-
-	std::sort(this->array, this->array + idx);
-	for (unsigned int i = 0; i < len - 1; i++) {
-		range = this->array[i+1] - this->array[i];
-		min = range < min ? range : min;
-	}
-	return min;
-}
-
-unsigned int	Span::longestSpan() const {
-	if (idx < 2)
-		throw Span::NotEnoughElementsException();
-	unsigned int* min = std::min_element(this->array, this->array + idx);
-	unsigned int* max = std::max_element(this->array, this->array + idx);
-	return *max - *min;
+void	Span::RandomInit()
+{
+	srand(time(NULL));
+	for (unsigned int i = 0; i < _N; i++)
+		 _sp.push_back(rand());
 }

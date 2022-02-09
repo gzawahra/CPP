@@ -1,47 +1,43 @@
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
-# include <cstdlib>
-# include <exception>
- 
-class Span {
+# include <iostream>
+# include <vector>
+# include <algorithm>
+# include <time.h>
 
-public:
-
-	Span();
-	Span(unsigned int n);
-	Span(Span const & ref);
-	virtual ~Span();
-
-	Span &	operator=(Span const & ref);
-	unsigned int & operator[](size_t idx) const;
-
-	size_t			size() const;
-	void			addNumber(unsigned int n);
-	void			addRange(unsigned int n, unsigned int times);
-	unsigned int	shortestSpan() const;
-	unsigned int	longestSpan() const;
-
-	class IndexOutOfRangeException : public std::exception {
-		public:
-			virtual const char*  what() const throw() {
-				return ("Span index out of range");
-			}
-	};
-
-	class NotEnoughElementsException : public std::exception {
-		public:
-			virtual const char*  what() const throw() {
-				return ("Not enough elements in the collection to perform the operation");
-			}
-	};
-
+class Span
+{
 private:
 
-	size_t	idx;
-	size_t	len;
-	unsigned int *	array;
+	std::vector<int>	_sp;
+	unsigned int		_N;
 
+public:
+	Span(unsigned int N = 0);
+	~Span();
+	Span(const Span&);
+	Span &operator=(const Span& op);
+
+	void	addNumber(int n);
+	long	shortestSpan(void);
+	long	longestSpan(void);
+	void	RandomInit( void );
+
+	class SpIsFull: public std::exception
+	{
+		virtual const char* what() const throw() 
+		{
+			return ("Span has not enough memory"); 
+		}
+	};
+	class SpIsTooSmall: public std::exception
+	{
+		virtual const char* what() const throw() 
+		{
+			return ("Span has not enough element"); 
+		}
+	};
 };
 
 #endif
